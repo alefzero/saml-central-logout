@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv="Pragma" content="no-cache">
+    <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>Single Logout</h1>
+    %%WARNING_MESSAGE%%
+    <p>Esta instância está em modo configuração. Verifique os dados abaixo
+        e efetue a configuração no seu ambiente.</p>
+    <ul>
+        <li>CONFIG_MODE=YES</li>
+        <li>SERVICE_HOSTNAME=%%SERVICE_HOSTNAME%%</li>
+        <li>IDP_METADATA_SAML_XML_URL=%%IDP_METADATA_SAML_XML_URL%%</li>
+        <li>SSL_CERT_FILE=%%SSL_CERT_FILE%%</li>
+        <li>SSL_CERT_PRIVATE_KEY=%%SSL_CERT_PRIVATE_KEY%%</li>
+        <li>[Opcional] SSL_CERT_FULL_CHAIN=%%SSL_CERT_FULL_CHAIN%%</li>
+        <li>[Opcional] ALLOWED_REDIRECT_DOMAINS=%%ALLOWED_REDIRECT_DOMAINS%%</li>
+        <li>[Opcional] DEFAULT_LOGOUT_DESTINATION_URL=%%DEFAULT_LOGOUT_DESTINATION_URL%%</li>
+    </ul>
+    </p>
+    <br />
+    <p>
+        Para configurar esta imagem:
+        <ol>
+            <li>Baixe os arquivos de integração;</li>
+            <li>Faça a configuração do cliente no IDP usando o arquivo de metadados;</li>
+            <li>Configure os arquivos como segredos (ou outro meio adequado) para o container;</li>
+            <li>Adicione as variáveis de ambiente apontando para os arquivos. Renomeie ou ajuste conforme sua necessidade.</li>
+            <ul>
+                <li>SAML_CERT_FILE=<a href="app1.cert" download/>app1.cert</a></li>
+                <li>SAML_CERT_PRIVATE_KEY=<a href="app1.key" download />app1.key</a></li>
+                <li>SAML_SP_METADATA_FILE=<a href="app1.xml" download/>app1.xml</a></li>
+            </ul>
+            <li>Altere a configuração da imagem para CONFIG_MODE=NO</li>
+        </ol>
+    </p>
+ 
+    <br />
+
+</body>
+
+</html>
