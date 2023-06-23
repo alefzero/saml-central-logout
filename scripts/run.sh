@@ -58,16 +58,16 @@ setupIDPConfig() {
         if curl_output=$(curl --fail $EXTRA_OPTS $IDP_METADATA_SAML_XML_URL -o "${SAML_FILES_FOLDER}/idp_metadata.xml" 2>&1); then
             if [ "${CONFIG_MODE_RESULT}" == "SETUP" ]; then
                 pushd ${SAML_FILES_FOLDER}
-                mellon_create_metadata saml-central-logout "https://${SERVICE_HOSTNAME}/mellon/"
-                cp saml-central-logout.cert /var/www/html_config
-                cp saml-central-logout.key /var/www/html_config
-                cp saml-central-logout.xml /var/www/html_config/saml-central-logout.xml
+                mellon_create_metadata saml_central_logout "https://${SERVICE_HOSTNAME}/mellon/"
+                cp saml_central_logout.cert /var/www/html_config
+                cp saml_central_logout.key /var/www/html_config
+                cp saml_central_logout.xml /var/www/html_config/saml_central_logout.xml
                 chmod +r /var/www/html_config/*
                 popd
             elif [ "${CONFIG_MODE_RESULT}" == "RUN" ]; then
-                cp ${SAML_CERT_FILE} "${SAML_FILES_FOLDER}/saml-central-logout.cert"
-                cp ${SAML_CERT_PRIVATE_KEY} "${SAML_FILES_FOLDER}/saml-central-logout.key"
-                cp ${SAML_SP_METADATA_FILE} "${SAML_FILES_FOLDER}/saml-central-logout.xml"
+                cp ${SAML_CERT_FILE} "${SAML_FILES_FOLDER}/saml_central_logout.cert"
+                cp ${SAML_CERT_PRIVATE_KEY} "${SAML_FILES_FOLDER}/saml_central_logout.key"
+                cp ${SAML_SP_METADATA_FILE} "${SAML_FILES_FOLDER}/saml_central_logout.xml"
             else
                 warning "Esta imagem não foi configurada. Use CONFIG_MODE=YES ou ajuste demais variáveis."
             fi
