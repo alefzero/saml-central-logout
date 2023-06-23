@@ -50,7 +50,12 @@ setupIDPConfig() {
     if [ "$IDP_METADATA_SAML_XML_URL" == "" ]; then
         warning "Variável obrigatória IDP_METADATA_SAML_XML_URL não foi configurada."
     else
-        if curl_output=$(curl --fail $IDP_METADATA_SAML_XML_URL -o "${SAML_FILES_FOLDER}/idp_metadata.xml" 2>&1); then
+        EXTRA_OPTS=""
+        if [ "${IGNORE_IDP_SSL_CERTS^^}" == "YES" ]; then
+            EXTRA_OPTS=" -k "
+        fi
+
+        if curl_output=$(curl --fail $EXTRA_OPTS $IDP_METADATA_SAML_XML_URL -o "${SAML_FILES_FOLDER}/idp_metadata.xml" 2>&1); then
             if [ "${CONFIG_MODE_RESULT}" == "SETUP" ]; then
                 pushd ${SAML_FILES_FOLDER}
                 mellon_create_metadata saml-central-logout "https://${SERVICE_HOSTNAME}/mellon/"

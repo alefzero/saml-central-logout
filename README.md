@@ -22,6 +22,7 @@ Parâmetro | Tipo |Ação | Valor padrão
 CONFIG_MODE|Obrigatório| Indica se a imagem será iniciada em modo de configuração de IDP | NO
 SERVICE_HOSTNAME|Obrigatório | Hostname a ser usado nesse host. São exemplos de formatos válidos: ```example.com``` e ```example.com:8443``` | example.com
 IDP_METADATA_SAML_XML_URL| Obrigatório| URL com protocoto onde está disponível o XML de configuração do IDP a ser utilizado para download de configuração |
+IGNORE_IDP_SSL_CERTS| Opcional | Ignora o certificado de SSL quanto está fazendo o download do arquivo de metadata do IDP | NO
 SSL_CERT_FILE|Obrigatório | Arquivo de certificado de SSL para o hostname | auto-assinado
 SSL_CERT_PRIVATE_KEY| Obrigatório |Chave privada do certificado de SSL para o hostname| auto-assinado
 SSL_CERT_FULL_CHAIN| Opcional| Cadeia de certificado para o servidor HTTP| auto-assinado
