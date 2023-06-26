@@ -9,6 +9,10 @@ RUN a2enmod ssl auth_mellon proxy proxy_http proxy_http2 headers rewrite
 RUN a2dismod status 
 RUN a2dissite 000-default
 
+# Security profile
+RUN sed -i 's/ServerTokens OS/ServerTokens Minimal/g' /etc/apache2/conf-enabled/security.conf
+RUN sed -i 's/ServerSignature On/ServerSignature Off/g' /etc/apache2/conf-enabled/security.conf
+
 # httpd-saml2-sp configuration
 RUN mkdir -p ${HOME_DIR} /etc/apache2/saml2 /etc/apache2/certs
 
@@ -29,11 +33,6 @@ ENV ALLOWED_REDIRECT_DOMAINS=""
 ENV DEFAULT_LOGOUT_DESTINATION_URL=/done.html
 ENV IGNORE_IDP_SSL_CERTS=NO
 WORKDIR ${HOME_DIR}
-
-
-ENV SERVICE_HOSTNAME=dev.local:8443
-ENV IDP_METADATA_SAML_XML_URL="http://dev.local:9080/realms/apps/protocol/saml/descriptor"
-ENV CONFIG_MODE=YES
 
 EXPOSE 80
 EXPOSE 443
