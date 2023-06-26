@@ -9,9 +9,9 @@ Para utilizar essa imagem, basta iniciá-la alterando as configurações para CO
 
 Para realizar o logout após a configuração, basta fazer um redirect para utilizar:
 
-```https://SERVICE_HOSTNAME/mellon/logout?ReturnTo=URL_A_RETORNAR_APOS_LOGOUT```
+```https://SERVICE_HOSTNAME/?returnURL=URL_A_RETORNAR_APOS_LOGOUT```
 
-Caso queira realizar um logout para a URL padrãoo, basta acessar:
+Caso queira realizar um logout para a URL padrão, basta acessar:
 
 ```https://SERVICE_HOSTNAME/```
 

@@ -1,20 +1,18 @@
 <!doctype html>
-
 <head>
     <meta charset='utf-8' />
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="refresh" content="2; url=https://%%SERVICE_HOSTNAME%%/mellon/logout?ReturnTo=%%DEFAULT_LOGOUT_DESTINATION_URL%%" />
+    <meta http-equiv="refresh" id="_redirect_tag" />
     <link href="/style.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    Processando o logout...
+    Redirecionando...
+    <script>
+        let params = new URLSearchParams(document.location.search);
+        let returnURL = params.get("returnURL") !== null ? params.get("returnURL") : "%%DEFAULT_LOGOUT_DESTINATION_URL%%";
+        document.getElementById("_redirect_tag").setAttribute("content", "1; url='https://%%SERVICE_HOSTNAME%%/mellon/logout?ReturnTo="+encodeURI(returnURL));
+    </script>
 </body>
 
 </html>
