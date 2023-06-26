@@ -3,18 +3,17 @@
 <head>
     <meta charset='utf-8' />
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="refresh" content="2; url=https://%%SERVICE_HOSTNAME%%/mellon/logout?ReturnTo=%%DEFAULT_LOGOUT_DESTINATION_URL%%" />
     <link href="/style.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    Processando o logout...
+    <div id="param"></div>
+    Processando o logout... <a href="https://%%SERVICE_HOSTNAME%%/private/">Aqui</a>"
+    <script>
+        let params=new URLSearchParams(document.location.search);
+        let returnURL=params.get("returnUrl")!==null;
+        document.getElementById("param").innerHTML = params.get("returnUrl");
+    </script>
 </body>
 
 </html>
